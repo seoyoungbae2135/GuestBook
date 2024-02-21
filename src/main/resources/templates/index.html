@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>방명록</title>
+    <!-- 부트스트랩 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{/javascript/index.js}"></script>
+
+    <th:block layout:fragment="css"></th:block>
+    <th:block layout:fragment="script"></th:block>
+</head>
+<body>
+<div>
+    <h1>방명록</h1>
+    <form action="/post" method="post">
+        <label>이미지:</label>
+        <input type="text" name="image"><br>
+        <label>내용:</label>
+        <textarea name="content"></textarea><br>
+        <label>작성자 이름:</label>
+        <input type="text" name="authorName"><br>
+        <button type="submit">저장</button>
+    </form>
+
+    <hr>
+
+    <!--<div th:each="post : ${posts}">
+        <img th:src="@{/image/{image}(image=${post.image})}" width="100" height="100">
+        <div th:text="${post.content}"></div>
+        <div>작성자: <span th:text="${post.authorName}"></span></div>
+        <div>작성일: <span th:text="${post.createdAt}"></span></div>
+        <form action="/post/{id}/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="id" th:value="${post.id}">
+            <button type="submit">삭제</button>
+        </form>
+        <hr>
+    </div>-->
+</div>
+</body>
+</html>
