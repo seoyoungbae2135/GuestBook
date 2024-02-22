@@ -12,21 +12,21 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
-public class GuestBook {
+public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false , length = 50)
-    private String name;
+
+    @Column
+    private String writer;
     @Column
     private String content;
     @Column
-    private LocalDateTime regDate;
+    private LocalDateTime writeDate;
 
-    private static ModelMapper modelMapper=new ModelMapper();
+    private static ModelMapper mapper=new ModelMapper();
 
-    public static GuestBook of(GuestDto guestDto){
-        guestDto.setRegDate(LocalDateTime.now());
-        return modelMapper.map(guestDto, GuestBook.class);
+    public GuestDto of(){
+        return mapper.map(this,GuestDto.class);
     }
 }
